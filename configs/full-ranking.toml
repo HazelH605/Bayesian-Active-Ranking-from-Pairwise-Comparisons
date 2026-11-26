@@ -1,0 +1,20 @@
+# Compare all full-ranking acquisition methods on the same simulated inputs.
+[experiment]
+seed = 42
+replicates = 20
+max_comparisons = 500
+evaluation_budgets = [100, 250, 500]
+policies = ["softmax_pair_risk", "uniform", "active_ranking", "akg", "quicksort", "bayes_entropy", "d_opt"]
+spr_c = 30.0
+jobs = 2
+checkpoint_interval = 100
+
+[inference]
+sigma0 = 1.0
+posterior_samples = 4096
+
+[[scenarios]]
+name = "full_ranking"
+n_models = 10
+cut_points = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+truth_mode = "prior_predictive"

@@ -1,0 +1,33 @@
+# Paper simulation settings. Cut points are group end positions.
+[experiment]
+seed = 42
+replicates = 1000
+max_comparisons = 1000
+evaluation_budgets = [100, 250, 500, 1000]
+initial_comparisons_per_pair = 10
+policies = ["softmax_pair_risk", "uniform", "active_ranking", "hamming_lucb", "topk_aware", "tournament_heap"]
+policy_seed_indices = [25, 0, 5, 9, 10, 14]
+spr_c = 30.0
+jobs = 8
+checkpoint_interval = 1000
+heap_repetitions = 5
+ar_confidence = "empirical"
+
+[inference]
+sigma0 = 1.0
+posterior_samples = 4096
+acquisition_samples = 1024
+quadrature_nodes = 20
+laplace_gtol = 1e-8
+laplace_maxiter = 100
+
+[[scenarios]]
+name = "top3_selection_grid_warm_m10"
+pairing_id = 601
+n_models = 10
+cut_points = [3, 10]
+truth_mode = "fixed_grid"
+boundary_gap = 0.3
+within_gap = 0.3
+epsilon = 0.0
+delta = 0.05

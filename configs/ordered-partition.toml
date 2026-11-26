@@ -1,0 +1,25 @@
+# Three ordered tiers of two models each, with historical observations.
+[experiment]
+seed = 42
+replicates = 20
+max_comparisons = 200
+evaluation_budgets = [50, 100, 200]
+policies = ["softmax_pair_risk", "uniform", "active_ranking"]
+initial_comparisons_per_pair = 5
+spr_c = 20.0
+jobs = 2
+checkpoint_interval = 50
+
+[inference]
+sigma0 = 1.5
+posterior_samples = 4096
+
+[[scenarios]]
+name = "three_tiers"
+n_models = 6
+cut_points = [2, 4, 6]
+truth_mode = "fixed_grid"
+boundary_gap = 0.5
+within_gap = 0.2
+epsilon = 0.0
+delta = 0.05

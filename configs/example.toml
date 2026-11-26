@@ -1,0 +1,39 @@
+# Edit this file to choose the model count, ranking targets, methods, and budget.
+[experiment]
+seed = 42
+replicates = 20
+max_comparisons = 250
+evaluation_budgets = [50, 100, 250]
+policies = ["softmax_pair_risk", "uniform"]
+initial_comparisons_per_pair = 0
+spr_c = 30.0
+jobs = 2
+checkpoint_interval = 50
+timing_replicates = 20
+timing_queries = 1000
+
+[inference]
+sigma0 = 1.0
+posterior_samples = 4096
+acquisition_samples = 1024
+
+[[scenarios]]
+name = "top2_identification"
+n_models = 8
+cut_points = [2, 8]
+truth_mode = "prior_predictive"
+pairing_id = 1
+
+[[scenarios]]
+name = "top2_ranking"
+n_models = 8
+cut_points = [1, 2, 8]
+truth_mode = "prior_predictive"
+pairing_id = 1
+
+[[scenarios]]
+name = "full_ranking"
+n_models = 8
+cut_points = [1, 2, 3, 4, 5, 6, 7, 8]
+truth_mode = "prior_predictive"
+pairing_id = 1

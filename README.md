@@ -1,1 +1,0 @@
-# Bayesian-Active-Ranking-from-Pairwise-Comparisons
